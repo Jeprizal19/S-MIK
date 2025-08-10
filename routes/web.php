@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     CategoryController,
+    DashboardController,
     ItemController,
     ItemLogController,
     LoanController,
@@ -22,9 +23,7 @@ Route::get('/', function () {
 // ====================
 // Dashboard (auth + verified)
 // ====================
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 // ====================
 // Profile Routes (auth)

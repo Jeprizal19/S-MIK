@@ -6,17 +6,108 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <p>Halo, {{ Auth::user()->name }}!</p>
-                    <p>Role Anda: <strong>{{ Auth::user()->role }}</strong></p>
-                    <p>Joined: {{ auth()->user()->created_at->format('d M Y') }}</p>
-                    @auth
-                    @if (Auth::user()->role === 'admin')
-                    <p>Selamat datang, Admin!</p>
-                    @endif
-                    @endauth
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900 dark:text-gray-100">
+                <p class="mb-1">Halo, <span class="font-semibold">{{ Auth::user()->name }}</span>!</p>
+                <p class="mb-1">Role Anda: <strong class="capitalize">{{ Auth::user()->role }}</strong></p>
+                <p class="mb-3">Joined: {{ auth()->user()->created_at->format('d M Y') }}</p>
+                @auth
+                @if (Auth::user()->role === 'admin')
+                <p class="text-green-600 font-semibold">Selamat datang, Admin!</p>
+                @endif
+                @endauth
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Total Barang -->
+                <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 7h18M3 12h18M3 17h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Total Barang</h3>
+                            <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $totalBarang }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Kategori -->
+                <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Total Kategori</h3>
+                            <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $totalKategori }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Lokasi -->
+                <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Total Lokasi</h3>
+                            <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $totalLokasi }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peminjaman Aktif -->
+                <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 12h6M12 9v6M4 12a8 8 0 1116 0 8 8 0 01-16 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Peminjaman Aktif</h3>
+                            <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $peminjamanAktif }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Perbaikan Aktif -->
+                <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M15 12h.01M12 15h.01M9 12h.01M12 9h.01M12 12v.01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Perbaikan Aktif</h3>
+                            <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $perbaikanAktif }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Terdaftar -->
+                <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-5 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M5.121 17.804A9 9 0 1118.879 6.196" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">User Terdaftar</h3>
+                            <p class="text-3xl font-bold text-gray-900 dark:text-white">{{ $totalUser }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -45,7 +45,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('items', ItemController::class);
     Route::resource('users', UserController::class);
 
-    // Item Logs (optional)
+    // Item Logs
     Route::get('items/{item}/logs', function (\App\Models\Item $item) {
         $logs = $item->logs()->with('user')->latest()->get();
         return view('items.logs', compact('item', 'logs'));

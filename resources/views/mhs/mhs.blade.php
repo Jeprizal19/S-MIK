@@ -1,23 +1,32 @@
-<x-app-layout>
+<style>
+    table, th, td{
+        border: 1px solid black;
+    }
+</style>
+<a href="{{ route('mhs.create') }}">Tambah Data</a>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>npm</th>
+                <th>Nama Mahasiswa</th>
+                <th>Program Studi</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($mhs as $item)
+            <tr>
 
-    <div>
-        <table class="table-column" style="border: 1px solid black;">
-            <thead style="border: 1px solid black;">
-                <tr>
-                    <th>npm</th>
-                    <th>Nama Mahasiswa</th>
-                    <th>Program Studi</th>
-                </tr>
-            </thead>
-            <tbody style="border: 1px solid black;">
-                <tr style="border: 1px solid black;">
-                    @foreach($mhs as $item)
-                    <td>{{$item->npm}}</td>
-                    <td>{{$item->nama_mhs}}</td>
-                    <td>{{$item->program_studi}}</td>
-                    @endforeach
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</x-app-layout>
+                <td>{{$item->npm}}</td>
+                <td>{{$item->nama_mhs}}</td>
+                <td>{{$item->program_studi}}</td>
+                <td>
+                    <a href="#">Edit</a>
+                    <a href="#">Hapus</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\{
     ItemLogController,
     LoanController,
     LocationController,
+    MhsController,
     ProfileController,
     RepairController,
     UserController
@@ -20,6 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Tes
+// Route::resource('mahasiswa', MhsController::class);
+Route::get('/mahasiswa', [MhsController::class, 'index'])->name('mhs.index');
+Route::get('/mahasiswa/create', [MhsController::class, 'create'])->name('mhs.create');
+Route::post('/mahasiswa/store', [MhsController::class, 'store'])->name('mhs.store');
+// endtes
 // ====================
 // Dashboard (auth + verified)
 // ====================

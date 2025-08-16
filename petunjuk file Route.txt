@@ -1,0 +1,6 @@
+Route::get('/mahasiswa', [MhsController::class, 'index'])->name('mhs.index');
+Route::get('/mahasiswa/create', [MhsController::class, 'create'])->name('mhs.create');
+Route::post('/mahasiswa/store', [MhsController::class, 'store'])->name('mhs.store');
+
+
+http://127.0.0.1:8000/mahasiswa

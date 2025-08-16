@@ -142,9 +142,11 @@
     @if(auth()->user()->role === 'admin')
     <!-- Manajemen Pengguna -->
     <div>
-      <h3 class="mx-6 mb-2 text-xs text-gray-400 uppercase tracking-widest">
+      <span
+        class="block mx-6 mb-2 text-xs text-gray-400 uppercase tracking-widest border-b border-gray-200"
+        :class="isSidebarExpanded ? 'opacity-100 h-auto' : 'opacity-0 h-0 overflow-hidden'">
         Manajemen Pengguna
-      </h3>
+      </span>
       <a href="{{ route('users.index') }}" class="flex items-center h-10 px-3 hover:bg-blue-100 hover:text-gray-800 rounded-lg transition-colors duration-150 ease-in-out focus:outline-none focus:shadow-outline {{ request()->routeIs('users.index', 'loans.create', 'loans.edit') ? 'active text-white bg-blue-400' : '' }}">
         <svg viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 flex-shrink-0 text-gray-800 {{ request()->routeIs('users.index') ? 'active text-white' : '' }}">
           <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z" clip-rule="evenodd" />

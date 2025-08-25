@@ -16,13 +16,23 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="flex min-h-screen bg-gray-300 dark:bg-gray-900" x-data="{ isSidebarExpanded: true }">
-        @include('layouts.sidebar')
-        <div class="flex-1 flex flex-col overflow-hidden">
-            @include('layouts.navigation')
+    <div class="flex h-screen bg-gray-300 dark:bg-gray-900" x-data="{ isSidebarExpanded: true }">
+        
+        <!-- Sidebar -->
+        <aside class="flex-shrink-0 h-screen overflow-y-auto bg-white dark:bg-gray-800">
+            @include('layouts.sidebar')
+        </aside>
+
+        <!-- Content area -->
+        <div class="flex flex-col flex-1">
             
-            <!-- Page Content -->
-            <main class="flex-1 p-0 overflow-auto">
+            <!-- Navbar (tetap di atas) -->
+            <header class="flex-shrink-0">
+                @include('layouts.navigation')
+            </header>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto p-4">
                 {{ $slot }}
             </main>
         </div>

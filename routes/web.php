@@ -18,7 +18,7 @@ use App\Http\Controllers\{
 // Public Routes
 // ====================
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 // Tes

@@ -32,7 +32,7 @@
             </header>
 
             <!-- Main Content -->
-            <main class="flex-1 overflow-y-auto p-4">
+            <main class="flex-1 overflow-y-auto p-2">
                 {{ $slot }}
             </main>
         </div>
